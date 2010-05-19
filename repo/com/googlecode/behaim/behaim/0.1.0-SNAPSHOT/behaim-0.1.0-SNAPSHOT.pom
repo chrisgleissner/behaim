@@ -55,12 +55,11 @@
 	</properties>
 
 	<build>
-
 		<extensions>
             <extension>
                 <groupId>org.jvnet.wagon-svn</groupId>
                 <artifactId>wagon-svn</artifactId>
-                <version>1.8</version>
+                <version>1.9</version>
             </extension>
         </extensions>
 		
@@ -74,9 +73,22 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>			
 		</plugins>
 	</build>
-
 
     <repositories>
         <repository>
