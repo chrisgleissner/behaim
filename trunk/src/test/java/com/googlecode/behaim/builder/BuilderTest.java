@@ -15,7 +15,7 @@ import com.googlecode.behaim.domain.Person;
 public class BuilderTest {
 
 	private final static Logger logger = LoggerFactory.getLogger(BuilderTest.class);
-	private final static int NUMBER_OF_INSTANCES = 2;
+	private final static int NUMBER_OF_INSTANCES = 5;
 	private static final int RECURSION_DEPTH = 1;
 
 	private void assertFullyPopulated(Person person, String breadcrumb, int level) {

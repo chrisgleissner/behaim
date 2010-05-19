@@ -35,7 +35,6 @@ public class Trip {
 	private void visit(Object location) {
 		while (legIterator.hasNext()) {
 			Leg leg = legIterator.next();
-			logger.trace("Visiting {} on {}", leg, location);
 			switch (leg.getType()) {
 			case ITERATE_OVER_ARRAY:
 				for (Object value : (Object[]) location) {
@@ -50,11 +49,13 @@ public class Trip {
 			case RECURSE:
 				Field field = leg.getFieldContext().getField();
 				VisitationResult result = visitor.visit(location, field);
+				logger.trace("{}={}", leg, result.getValue());
 				visit(result.getValue());
 				break;
 			case NORMAL:
 				field = leg.getFieldContext().getField();
-				visitor.visit(location, field);
+				result = visitor.visit(location, field);
+				logger.trace("{}={}", leg, result.getValue());
 				continue;
 			case RETURN:
 				return;
