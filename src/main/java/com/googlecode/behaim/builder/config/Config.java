@@ -8,7 +8,7 @@ import java.util.Map;
 public class Config {
 	private static final int DEFAULT_BATCH_SIZE = 1;
 	public final static Config DEFAULT_CONFIG = new Config();
-	private static final int DEFAULT_RECURSION_DEPTH = 3;
+	private static final int DEFAULT_RECURSION_DEPTH = 2;
 	private int batchSize = DEFAULT_BATCH_SIZE;
 	private final List<String> excludedClassNames = new ArrayList<String>();
 	private Map<String, FieldConfig> fieldConfigs = new HashMap<String, FieldConfig>();
