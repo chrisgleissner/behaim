@@ -1,8 +1,6 @@
-# behaim
-Java Object Graph Explorer
-
 ![behaim logo](logo.png)
 
+# behaim
 Behaim uses Java reflection to explore an object graph up to a configurable recursion depth.
 
 # Features
