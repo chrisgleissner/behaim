@@ -1,30 +1,24 @@
 ![behaim logo](logo.png)
 
-# behaim
-Behaim uses Java reflection to explore an object graph up to a configurable recursion depth.
+# Behaim
+
+Behaim uses Java reflection to explore an domain model up to a configurable recursion depth. The resulting meta data
+can then be used by pluggable visitors. 
+
+As a proof of concept, Behaim currently comes with a builder visitor that allows for the creation of randomly populated 
+object graphs which may be useful for performance tests.
 
 # Features
-- Extensible with custom visitors
 - Multi-threaded graph exploration
 - Re-use of meta data about an already explored object graph
-
-# Provided Visitors
-- Builder: instantiate an object graph
-- Logger: log an object graph (pending)
-- Cloner: clone an object graph (pending
+- Extensible with custom visitors. Already comes with a visitor to create a randomly populated object graph.
 
 # Requirements
 - Java 5 or above
 - Maven 2.2.1 or above
 
-# Populator
-The structure of the created objects is configurable and defaults to filling all object fields with random data.
+# Builder Usage
 
-# Use Cases
-* Creation of a complex domain object hierarchy to test marshalling of all fields
-* Simulation of production test load
-
-# Usage
 ## Default configuration
 ```
 Foo foo = Builder.make(Foo.class);
@@ -38,8 +32,8 @@ Foo foo = Builder.make(Foo.class, config);
 Collection<Foo> foos = Builder.make(Foo.class, config, 100);
 ```
 
-## Re-usable builder
-When you need to make objects with the same configuration in several steps, use the instance make method.
+## Repeated builds
+When you need to repeatedly create objects with the same configuration, use the instance make method.
 ```
 Builder builder = new Builder(Foo.class);
 Collection<Foo> foos1 = builder.make(100);
