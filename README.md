@@ -8,7 +8,8 @@ can then be used by pluggable visitors.
 As a proof of concept, Behaim currently comes with a builder visitor that allows for the creation of randomly populated 
 object graphs which may be useful for performance tests.
 
-![CI status](https://travis-ci.org/chrisgleissner/behaim.svg?branch=master)
+## Status
+[![Build Status](https://travis-ci.org/chrisgleissner/behaim.svg?branch=master)](https://travis-ci.org/chrisgleissner/behaim)
 
 ## Features
 - Multi-threaded graph exploration
