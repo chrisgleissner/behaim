@@ -14,8 +14,8 @@ object graphs which may be useful for performance tests.
 - Extensible with custom visitors. Already comes with a visitor to create a randomly populated object graph.
 
 # Requirements
-- Java 5 or above
-- Maven 2.2.1 or above
+- Oracle JDK 7 or above
+- Maven 3.x or above
 
 # Builder Usage
 
