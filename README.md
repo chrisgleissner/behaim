@@ -42,4 +42,5 @@ Collection<Foo> foos2 = builder.make(50);
 
 # FAQ
 What does Behaim mean?
-Martin Behaim (1459 – 1507) was a German cosmographer, astronomer, geographer and explorer. His Behaim Globe from 1492 is considered to be the oldest surviving terrestrial globe.
+Martin Behaim (1459 – 1507) was a German cosmographer, astronomer, geographer and explorer. His [Erdapfel](https://en.wikipedia.org/wiki/Erdapfel) 
+from 1492 is considered to be the oldest surviving terrestrial globe.
