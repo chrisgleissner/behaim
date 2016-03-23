@@ -23,22 +23,22 @@ import com.github.behaim.explorer.FieldUtil;
  *
  * @author Christian Gleissner
  */
-public class Leg {
+class Leg {
 
-    public final static Leg RETURN_LEG = new Leg(null, LegType.RETURN);
+    final static Leg RETURN_LEG = new Leg(null, LegType.RETURN);
     private final FieldContext fieldContext;
     private final LegType type;
 
-    public Leg(FieldContext fieldContext, LegType legType) {
+    Leg(FieldContext fieldContext, LegType legType) {
         this.fieldContext = fieldContext;
         type = legType;
     }
 
-    public FieldContext getFieldContext() {
+    FieldContext getFieldContext() {
         return fieldContext;
     }
 
-    public LegType getType() {
+    LegType getType() {
         return type;
     }
 

@@ -16,22 +16,38 @@
 package com.github.behaim.route;
 
 import com.github.behaim.explorer.Explorer;
+import com.github.behaim.explorer.FieldContext;
 import com.github.behaim.explorer.Visitor;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Route discovered by an {@link Explorer}.
  *
  * @author Christian Gleissner
+ * @author Fabien Duminy
  */
 public class Route {
 
-    private final Collection<Leg> legs = new ArrayList<Leg>();
+    private final List<Leg> legs = new ArrayList<Leg>();
 
-    public void add(Leg leg) {
-        legs.add(leg);
+    public void addLeg(FieldContext fieldContext, LegType legType) {
+        if (LegType.RETURN.equals(legType)) {
+            legs.add(Leg.RETURN_LEG);
+        } else {
+            // following code tries to avoid creating a new instance of Leg when it's not necessary.
+            for (int i = 0; i < legs.size(); i++) {
+                Leg leg = legs.get(i);
+                if (Objects.equals(leg.getType(), legType) && Objects.equals(leg.getFieldContext(), fieldContext)) {
+                    legs.add(leg);
+                    return;
+                }
+            }
+            legs.add(new Leg(fieldContext, legType));
+        }
     }
 
     private void append(StringBuilder sb, String s, int recursionLevel) {
