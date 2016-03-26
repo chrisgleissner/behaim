@@ -13,8 +13,8 @@ import java.util.Collection;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class BuilderTest {
-    private final static Logger logger = LoggerFactory.getLogger(BuilderTest.class);
+public class BehaimTest {
+    private final static Logger logger = LoggerFactory.getLogger(BehaimTest.class);
     private static final Config CONFIG = new Config(0, 1);
 
     @Test
