@@ -19,11 +19,13 @@ import com.github.behaim.builder.seeder.Seeder;
 
 import java.math.BigInteger;
 
+import static java.math.BigInteger.valueOf;
+
 public class BigIntegerAdapter extends AbstractSeedAdapter<BigInteger> {
 
     @Override
     public BigInteger convert(Seeder seeder) {
-        return new BigInteger("" + (long) seeder.createSeed());
+        return valueOf(seeder.createIntSeed());
     }
 
     @Override

@@ -54,6 +54,10 @@ public class FieldConfig {
         return minValue;
     }
 
+    public boolean isConstantValue() {
+        return minValue == maxValue;
+    }
+
     public boolean isRandom() {
         return random;
     }

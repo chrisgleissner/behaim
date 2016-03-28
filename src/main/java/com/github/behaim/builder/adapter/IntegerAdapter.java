@@ -17,11 +17,13 @@ package com.github.behaim.builder.adapter;
 
 import com.github.behaim.builder.seeder.Seeder;
 
+import static java.lang.Integer.valueOf;
+
 public class IntegerAdapter extends AbstractSeedAdapter<Integer> {
 
     @Override
     public Integer convert(Seeder seeder) {
-        return (int) seeder.createSeed();
+        return valueOf(seeder.createIntSeed());
     }
 
     @Override

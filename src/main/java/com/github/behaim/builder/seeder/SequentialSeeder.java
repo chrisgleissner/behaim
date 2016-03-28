@@ -27,12 +27,20 @@ public class SequentialSeeder extends AbstractSeeder {
     }
 
     @Override
-    public double createSeed() {
+    public int createIntSeed() {
         FieldConfig fieldConfig = getConfig();
-        double seed = nextSeed++;
+        if (fieldConfig.isConstantValue()) {
+            return fieldConfig.getMinValue();
+        }
+
+        int seed = nextSeed++;
         if (nextSeed > fieldConfig.getMaxValue()) {
             nextSeed = fieldConfig.getMinValue();
         }
         return seed;
+    }
+
+    public double createSeed() {
+        return createIntSeed();
     }
 }

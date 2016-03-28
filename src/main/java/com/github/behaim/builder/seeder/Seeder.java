@@ -21,5 +21,7 @@ public interface Seeder {
 
     double createSeed();
 
+    int createIntSeed();
+
     FieldConfig getConfig();
 }
