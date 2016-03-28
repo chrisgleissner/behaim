@@ -17,20 +17,19 @@ package com.github.behaim.builder.config;
 
 public class FieldConfig {
 
-    private int maxLength = 10;
-    private int maxValue = Integer.MAX_VALUE;
-    private int minLength = 3;
-    private int minValue = 0;
-    private boolean random = true;
+    private final int maxLength;
+    private final int maxValue;
+    private final int minLength;
+    private final int minValue;
+    private final boolean random;
     // TODO gleissc Add support for unique random values, then expose this field
     private final boolean unique = false;
 
     public FieldConfig() {
-        super();
+        this(true, 0, Integer.MAX_VALUE, 3, 10);
     }
 
     public FieldConfig(boolean random, int minValue, int maxValue, int minLength, int maxLength) {
-        super();
         this.random = random;
         this.minValue = minValue;
         this.maxValue = maxValue;
