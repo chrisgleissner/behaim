@@ -22,13 +22,16 @@ import java.util.Map;
 
 public class Config {
     private static final int DEFAULT_BATCH_SIZE = 1;
-    public final static Config DEFAULT_CONFIG = new Config();
     private static final int DEFAULT_RECURSION_DEPTH = 2;
-    private int batchSize = DEFAULT_BATCH_SIZE;
-    private final List<String> excludedClassNames = new ArrayList<String>();
-    private Map<String, FieldConfig> fieldConfigs = new HashMap<String, FieldConfig>();
+
+    public final static Config DEFAULT_CONFIG = new Config();
+
+    private final int batchSize;
+    private final int recursionDepth;
+
+    private final List<String> excludedClassNames = new ArrayList<>();
+    private final Map<String, FieldConfig> fieldConfigs;
     private final FieldConfig globalFieldConfig = new FieldConfig();
-    private int recursionDepth = DEFAULT_RECURSION_DEPTH;
 
     public Config() {
         this(DEFAULT_BATCH_SIZE, DEFAULT_RECURSION_DEPTH, null);
@@ -45,9 +48,7 @@ public class Config {
     public Config(int batchSize, int recursionDepth, Map<String, FieldConfig> fieldConfigs) {
         this.batchSize = batchSize;
         this.recursionDepth = recursionDepth;
-        if (fieldConfigs != null) {
-            this.fieldConfigs = fieldConfigs;
-        }
+        this.fieldConfigs = (fieldConfigs != null) ? fieldConfigs : new HashMap<String, FieldConfig>();
         excludedClassNames.add("java");
     }
 
