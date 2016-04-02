@@ -52,22 +52,24 @@ public class Explorer {
                     route.addLeg(visitationResult.getFieldContext(), LegType.RECURSE);
                     try {
                         Object fieldValue = visitationResult.getValue();
-                        if (fieldValue instanceof Collection) {
-                            route.addLeg(visitationResult.getFieldContext(), LegType.ITERATE_OVER_COLLECTION);
-                            int elementIndex = 0;
-                            for (Object fieldElement : (Collection) fieldValue) {
-                                explore(route, fieldElement, trace.add(field, elementIndex++));
-                                trace.remove();
+                        if (fieldValue != null) {
+                            if (fieldValue instanceof Collection) {
+                                route.addLeg(visitationResult.getFieldContext(), LegType.ITERATE_OVER_COLLECTION);
+                                int elementIndex = 0;
+                                for (Object fieldElement : (Collection) fieldValue) {
+                                    explore(route, fieldElement, trace.add(field, elementIndex++));
+                                    trace.remove();
+                                }
+                            } else if (fieldValue.getClass().isArray()) {
+                                route.addLeg(visitationResult.getFieldContext(), LegType.ITERATE_OVER_ARRAY);
+                                int elementIndex = 0;
+                                for (Object fieldElement : (Object[]) fieldValue) {
+                                    explore(route, fieldElement, trace.add(field, elementIndex++));
+                                    trace.remove();
+                                }
+                            } else {
+                                explore(route, fieldValue, trace);
                             }
-                        } else if (fieldValue.getClass().isArray()) {
-                            route.addLeg(visitationResult.getFieldContext(), LegType.ITERATE_OVER_ARRAY);
-                            int elementIndex = 0;
-                            for (Object fieldElement : (Object[]) fieldValue) {
-                                explore(route, fieldElement, trace.add(field, elementIndex++));
-                                trace.remove();
-                            }
-                        } else {
-                            explore(route, fieldValue, trace);
                         }
                     } catch (Exception e) {
                         throw new BehaimException("Could not explore " + field.getDeclaringClass().getName() + "."

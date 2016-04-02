@@ -15,6 +15,8 @@ import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.Iterator;
 
+import static com.github.behaim.domain.PersonFields.NAME;
+import static com.github.behaim.domain.PersonFields.TEAM;
 import static com.github.behaim.route.LegType.*;
 import static java.util.Collections.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,8 +27,6 @@ import static org.mockito.Mockito.*;
  * @author Fabien Duminy
  */
 public class RouteTest {
-    private static final Field NAME = field("name");
-    private static final Field TEAM = field("team");
     private static final String NAME_VALUE = NAME.getName() + "Value";
     private static final Collection TEAM_VALUE = unmodifiableList(emptyList());
     @Mock private FieldContext nameContext;
@@ -161,16 +161,6 @@ public class RouteTest {
         Leg leg1 = legIterator.next();
         assertThat(Leg.RETURN_LEG).isNotNull();
         assertThat(leg1).isSameAs(Leg.RETURN_LEG);
-    }
-
-    public static Field field(String fieldName) {
-        try {
-            final Field declaredField = Person.class.getDeclaredField(fieldName);
-            declaredField.setAccessible(true);
-            return declaredField;
-        } catch (NoSuchFieldException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public static Answer<VisitationResult> result(final FieldContext fieldContext, final Object object, final Object fieldValue) {

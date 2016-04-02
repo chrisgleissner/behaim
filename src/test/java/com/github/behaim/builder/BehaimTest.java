@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 
+import static com.github.behaim.domain.SingleValueEnum.SINGLE_VALUE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BehaimTest {
@@ -60,6 +61,9 @@ public class BehaimTest {
         assertions.assertThat(person.getAnnualSalary()).as(breadcrumb + ".annualSalary at level " + level).isNotNull();
         assertions.assertThat(person.getBirthday()).as(breadcrumb + ".birthday at level " + level).isNotNull();
         assertions.assertThat(person.getName()).as(breadcrumb + ".name at level " + level).isNotNull();
+        assertions.assertThat(person.getPreferredColor()).as(breadcrumb + ".preferredColor at level " + level).isNotNull();
+        assertions.assertThat(person.getAlwaysNullValue()).as(breadcrumb + ".awaysNullValue at level " + level).isNull();
+        assertions.assertThat(person.getSingleValue()).as(breadcrumb + ".singleValue at level " + level).isSameAs(SINGLE_VALUE);
         if (level > 0) {
             assertFullyPopulated(assertions, person.getManager(), breadcrumb + ".manager", level - 1);
 
