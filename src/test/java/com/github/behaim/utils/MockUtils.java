@@ -5,8 +5,6 @@ import com.github.behaim.explorer.VisitationResult;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-import java.lang.reflect.Field;
-
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -24,9 +22,9 @@ public class MockUtils {
         };
     }
 
-    public static FieldContext fieldContext(Field field) {
+    public static FieldContext fieldContext(PersonFields field) {
         FieldContext context = mock(FieldContext.class);
-        when(context.getField()).thenReturn(field);
+        when(context.getField()).thenReturn(field.getField());
         return context;
     }
 }

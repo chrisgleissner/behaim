@@ -7,6 +7,7 @@ import com.github.behaim.builder.seeder.Seeder;
 import com.github.behaim.domain.ColorEnum;
 import com.github.behaim.domain.Person;
 import com.github.behaim.explorer.VisitationResult;
+import com.github.behaim.utils.PersonFields;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Before;
 import org.junit.Test;
@@ -58,7 +59,8 @@ public class ProducerVisitorTest {
     }
 
     @SuppressWarnings("unchecked")
-    private <E extends Enum<E>> void testVisit_enumField(Field field, E expectedValue) throws Exception {
+    private <E extends Enum<E>> void testVisit_enumField(PersonFields personField, E expectedValue) throws Exception {
+        Field field = personField.getField();
         when(visitorContext.getFieldContextFor(eq(field))).thenReturn(fieldContext);
         Class<? extends Enum> enumClass = field.getType().asSubclass(Enum.class);
         when(visitorContext.getSeedAdapterFor(eq(field))).thenReturn((SeedAdapter) new EnumAdapter<>(enumClass));

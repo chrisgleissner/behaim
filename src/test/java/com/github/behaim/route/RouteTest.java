@@ -26,7 +26,7 @@ import static org.mockito.Mockito.*;
  * @author Fabien Duminy
  */
 public class RouteTest {
-    private static final String NAME_VALUE = NAME.getName() + "Value";
+    private static final String NAME_VALUE = NAME.getField().getName() + "Value";
     private static final Collection TEAM_VALUE = unmodifiableList(emptyList());
     private FieldContext nameContext;
     private FieldContext teamContext;
