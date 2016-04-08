@@ -59,4 +59,8 @@ public class Person {
     public SingleValueEnum getSingleValue() {
         return singleValue;
     }
+
+    public void setManager(Person manager) {
+        this.manager = manager;
+    }
 }

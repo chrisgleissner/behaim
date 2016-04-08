@@ -8,6 +8,9 @@ import java.lang.reflect.Field;
  * @author Fabien DUMINY
  */
 public enum PersonFields {
+    ANNUALSALARY("annualSalary"),
+    BIRTHDAY("birthday"),
+    MANAGER("manager"),
     NAME("name"),
     TEAM("team"),
     PREFERRED_COLOR("preferredColor"),

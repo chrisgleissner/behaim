@@ -1,10 +1,13 @@
 package com.github.behaim.utils;
 
+import com.github.behaim.domain.Person;
 import com.github.behaim.explorer.FieldContext;
 import com.github.behaim.explorer.VisitationResult;
+import com.github.behaim.explorer.Visitor;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
+import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -26,5 +29,19 @@ public class MockUtils {
         FieldContext context = mock(FieldContext.class);
         when(context.getField()).thenReturn(field.getField());
         return context;
+    }
+
+    public static Visitor visitor(Person... persons) {
+        Visitor visitor = mock(Visitor.class);
+        FieldContext[] contexts = new FieldContext[PersonFields.values().length];
+        for (PersonFields field : PersonFields.values()) {
+            contexts[field.ordinal()] = fieldContext(field);
+        }
+        for (PersonFields field : PersonFields.values()) {
+            for (Person person : persons) {
+                when(visitor.visit(eq(person), eq(field.getField()))).thenAnswer(result(contexts[field.ordinal()], person, null));
+            }
+        }
+        return visitor;
     }
 }
