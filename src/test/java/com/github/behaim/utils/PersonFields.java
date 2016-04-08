@@ -1,4 +1,6 @@
-package com.github.behaim.domain;
+package com.github.behaim.utils;
+
+import com.github.behaim.domain.Person;
 
 import java.lang.reflect.Field;
 

@@ -16,8 +16,8 @@ import org.junit.runner.RunWith;
 
 import java.lang.reflect.Field;
 
-import static com.github.behaim.domain.PersonFields.*;
 import static com.github.behaim.domain.SingleValueEnum.SINGLE_VALUE;
+import static com.github.behaim.utils.PersonFields.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.*;

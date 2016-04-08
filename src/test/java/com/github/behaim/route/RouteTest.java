@@ -2,22 +2,21 @@ package com.github.behaim.route;
 
 import com.github.behaim.domain.Person;
 import com.github.behaim.explorer.FieldContext;
-import com.github.behaim.explorer.VisitationResult;
 import com.github.behaim.explorer.Visitor;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.Iterator;
 
-import static com.github.behaim.domain.PersonFields.NAME;
-import static com.github.behaim.domain.PersonFields.TEAM;
 import static com.github.behaim.route.LegType.*;
+import static com.github.behaim.utils.MockUtils.fieldContext;
+import static com.github.behaim.utils.MockUtils.result;
+import static com.github.behaim.utils.PersonFields.NAME;
+import static com.github.behaim.utils.PersonFields.TEAM;
 import static java.util.Collections.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.eq;
@@ -29,15 +28,15 @@ import static org.mockito.Mockito.*;
 public class RouteTest {
     private static final String NAME_VALUE = NAME.getName() + "Value";
     private static final Collection TEAM_VALUE = unmodifiableList(emptyList());
-    @Mock private FieldContext nameContext;
-    @Mock private FieldContext teamContext;
+    private FieldContext nameContext;
+    private FieldContext teamContext;
     @Mock private FieldContext collectionContext;
 
     @Before
     public void setUp() throws NoSuchFieldException {
         MockitoAnnotations.initMocks(this);
-        when(nameContext.getField()).thenReturn(NAME);
-        when(teamContext.getField()).thenReturn(TEAM);
+        nameContext = fieldContext(NAME);
+        teamContext = fieldContext(TEAM);
     }
 
     @Test
@@ -161,15 +160,5 @@ public class RouteTest {
         Leg leg1 = legIterator.next();
         assertThat(Leg.RETURN_LEG).isNotNull();
         assertThat(leg1).isSameAs(Leg.RETURN_LEG);
-    }
-
-    public static Answer<VisitationResult> result(final FieldContext fieldContext, final Object object, final Object fieldValue) {
-        return new Answer<VisitationResult>() {
-            @Override
-            public VisitationResult answer(InvocationOnMock invocationOnMock) throws Throwable {
-                fieldContext.getField().set(object, fieldValue);
-                return new VisitationResult(fieldContext, fieldValue, false);
-            }
-        };
     }
 }

@@ -13,7 +13,7 @@ import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
-import static com.github.behaim.domain.PersonFields.PREFERRED_COLOR;
+import static com.github.behaim.utils.PersonFields.PREFERRED_COLOR;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.*;
