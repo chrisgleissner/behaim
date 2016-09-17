@@ -16,6 +16,7 @@
 package com.github.behaim.builder.producer;
 
 import com.github.behaim.builder.adapter.AdapterRegistry;
+import com.github.behaim.builder.adapter.EnumAdapter;
 import com.github.behaim.builder.adapter.SeedAdapter;
 import com.github.behaim.builder.config.Config;
 import com.github.behaim.builder.config.FieldConfig;
@@ -57,6 +58,10 @@ public class ProducerVisitorContext {
         ProducerFieldContext producerFieldContext = producerFieldContexts.get(field);
         if (producerFieldContext == null) {
             FieldConfig fieldConfig = config.getFieldConfigFor(FieldUtil.getNameFor(field));
+            if (field.getType().isEnum()) {
+                int maxValue = field.getType().getEnumConstants().length;
+                fieldConfig = new FieldConfig(fieldConfig.isRandom(), 0, maxValue, 0, 0);
+            }
             Seeder seeder = seederFactory.createSeeder(fieldConfig);
             producerFieldContext = new ProducerFieldContext(field, seeder);
             ProducerFieldContext existingFieldContext = producerFieldContexts.putIfAbsent(field, producerFieldContext);
@@ -71,6 +76,9 @@ public class ProducerVisitorContext {
         Class<?> type = field.getType();
         if (type.isPrimitive()) {
             type = TypeUtil.wrap(type);
+        }
+        if (field.getType().isEnum()) {
+            return new EnumAdapter<>(field.getType().asSubclass(Enum.class));
         }
         return seedAdapters.get(type);
     }

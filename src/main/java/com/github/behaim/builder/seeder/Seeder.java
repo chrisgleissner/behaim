@@ -19,7 +19,15 @@ import com.github.behaim.builder.config.FieldConfig;
 
 public interface Seeder {
 
+    /**
+     * @return a double between <code>getConfig().getMinValue()</code> (inclusive) and <code>getConfig().getMaxValue()</code> (exclusive).
+     */
     double createSeed();
+
+    /**
+     * @return an integer between <code>getConfig().getMinValue()</code> (inclusive) and <code>getConfig().getMaxValue()</code> (exclusive).
+     */
+    int createIntSeed();
 
     FieldConfig getConfig();
 }

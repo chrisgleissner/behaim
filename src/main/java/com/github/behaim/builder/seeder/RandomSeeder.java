@@ -30,6 +30,20 @@ public class RandomSeeder extends AbstractSeeder {
     @Override
     public double createSeed() {
         FieldConfig fieldConfig = getConfig();
+        if (fieldConfig.isConstantValue()) {
+            return fieldConfig.getMinValue();
+        }
+
         return random.nextDouble() * (fieldConfig.getMaxValue() - fieldConfig.getMinValue()) + fieldConfig.getMinValue();
+    }
+
+    @Override
+    public int createIntSeed() {
+        FieldConfig fieldConfig = getConfig();
+        if (fieldConfig.isConstantValue()) {
+            return fieldConfig.getMinValue();
+        }
+
+        return random.nextInt(fieldConfig.getMaxValue() - fieldConfig.getMinValue()) + fieldConfig.getMinValue();
     }
 }

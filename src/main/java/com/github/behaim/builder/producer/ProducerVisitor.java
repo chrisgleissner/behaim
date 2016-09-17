@@ -17,7 +17,6 @@ package com.github.behaim.builder.producer;
 
 import com.github.behaim.builder.adapter.SeedAdapter;
 import com.github.behaim.builder.seeder.Seeder;
-import com.github.behaim.explorer.FieldContext;
 import com.github.behaim.explorer.FieldUtil;
 import com.github.behaim.explorer.VisitationResult;
 import com.github.behaim.explorer.Visitor;
@@ -82,7 +81,7 @@ public class ProducerVisitor implements Visitor {
                     array[i] = elementType.newInstance();
                 }
                 fieldValue = array;
-            } else {
+            } else if (!field.getType().isEnum()) {
                 fieldValue = field.getType().newInstance();
             }
         } catch (Exception e) {
@@ -138,8 +137,8 @@ public class ProducerVisitor implements Visitor {
     public VisitationResult visit(Object object, Field field) {
         Object fieldValue = null;
         Class fieldClass = field.getType();
-        FieldContext fieldContext = context.getFieldContextFor(field);
-        Seeder seeder = context.getFieldContextFor(field).getSeeder();
+        ProducerFieldContext fieldContext = context.getFieldContextFor(field);
+        Seeder seeder = fieldContext.getSeeder();
         SeedAdapter<?> seedAdapter = context.getSeedAdapterFor(field);
         boolean visitOfValueRequired = true;
         if (seedAdapter != null) {

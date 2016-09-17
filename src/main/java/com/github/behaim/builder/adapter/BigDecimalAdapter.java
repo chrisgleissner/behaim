@@ -19,11 +19,13 @@ import com.github.behaim.builder.seeder.Seeder;
 
 import java.math.BigDecimal;
 
+import static java.math.BigDecimal.valueOf;
+
 public class BigDecimalAdapter extends AbstractSeedAdapter<BigDecimal> {
 
     @Override
     public BigDecimal convert(Seeder seeder) {
-        return new BigDecimal("" + seeder.createSeed());
+        return valueOf(seeder.createSeed());
     }
 
     @Override

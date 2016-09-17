@@ -17,17 +17,31 @@ package com.github.behaim.builder.adapter;
 
 import com.github.behaim.builder.seeder.Seeder;
 
-import static java.lang.Long.valueOf;
+/**
+ * @author Fabien DUMINY
+ */
+public class EnumAdapter<E extends Enum<E>> extends AbstractSeedAdapter<E> {
+    private final Class<E> enumClass;
 
-public class LongAdapter extends AbstractSeedAdapter<Long> {
-
-    @Override
-    public Long convert(Seeder seeder) {
-        return valueOf(seeder.createIntSeed());
+    public EnumAdapter(Class<E> enumClass) {
+        this.enumClass = enumClass;
     }
 
     @Override
-    public Class<Long> getValueClass() {
-        return Long.class;
+    public E convert(Seeder seeder) {
+        E[] enumValues = enumClass.getEnumConstants();
+        if (enumValues.length == 0) {
+            return null;
+        }
+        if (enumValues.length == 1) {
+            return enumValues[0];
+        }
+
+        return enumValues[seeder.createIntSeed()];
+    }
+
+    @Override
+    public Class<E> getValueClass() {
+        return enumClass;
     }
 }
