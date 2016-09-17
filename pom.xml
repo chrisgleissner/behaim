@@ -52,6 +52,13 @@
         <java.version>1.7</java.version>
     </properties>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <reporting>
         <plugins>
             <plugin>
