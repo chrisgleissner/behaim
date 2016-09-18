@@ -31,10 +31,6 @@ public abstract class AbstractSeederTest<T extends Seeder> {
         seeder = createSeeder();
     }
 
-    abstract public void testCreateSeed() throws Exception;
-
-    abstract public void testCreateIntSeed() throws Exception;
-
     abstract T createSeeder();
 
     @Test

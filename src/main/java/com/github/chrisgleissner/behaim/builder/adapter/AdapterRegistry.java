@@ -22,12 +22,10 @@ import java.util.Collection;
 import java.util.List;
 
 public class AdapterRegistry {
-    @SuppressWarnings("unchecked")
     private final static Class[] SEED_ADAPTER_CLASSES = new Class[]{BigDecimalAdapter.class, BigIntegerAdapter.class,
             BooleanAdapter.class, DateAdapter.class, DoubleAdapter.class, FloatAdapter.class, IntegerAdapter.class,
             LongAdapter.class, StringAdapter.class};
 
-    @SuppressWarnings("unchecked")
     public Collection<SeedAdapter> getSeedAdapters() {
         List<SeedAdapter> seedAdapters = new ArrayList<SeedAdapter>();
         for (Class seedAdapterClass : SEED_ADAPTER_CLASSES) {

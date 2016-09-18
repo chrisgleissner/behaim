@@ -31,7 +31,6 @@ public class TypeUtil {
         PRIMITIVE_TO_WRAPPER_MAP.put(long.class, Long.class);
         PRIMITIVE_TO_WRAPPER_MAP.put(float.class, Float.class);
         PRIMITIVE_TO_WRAPPER_MAP.put(double.class, Double.class);
-
     }
 
     public static Class<?> wrap(Class<?> primitiveType) {

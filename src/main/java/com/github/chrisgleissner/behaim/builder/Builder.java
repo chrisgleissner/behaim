@@ -36,7 +36,6 @@ import java.util.concurrent.Future;
 
 public class Builder<T> {
     private final static ExecutorService executorService = Executors.newCachedThreadPool();
-
     private final static Logger logger = LoggerFactory.getLogger(Behaim.class);
 
     private Config config;
@@ -79,7 +78,6 @@ public class Builder<T> {
         route = explorer.explore(t);
         logger.trace("Exploration discovered route:\n{}", route);
         return t;
-
     }
 
     private Collection<T> revisit(int numberOfInstances) {
