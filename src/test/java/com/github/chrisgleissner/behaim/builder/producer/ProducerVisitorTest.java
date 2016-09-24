@@ -1,14 +1,12 @@
 package com.github.chrisgleissner.behaim.builder.producer;
 
-import com.github.chrisgleissner.behaim.builder.adapter.EnumAdapter;
-import com.github.chrisgleissner.behaim.builder.adapter.SeedAdapter;
 import com.github.chrisgleissner.behaim.builder.config.Config;
 import com.github.chrisgleissner.behaim.builder.seeder.Seeder;
 import com.github.chrisgleissner.behaim.domain.ColorEnum;
 import com.github.chrisgleissner.behaim.domain.Person;
+import com.github.chrisgleissner.behaim.domain.SingleValueEnum;
 import com.github.chrisgleissner.behaim.explorer.VisitationResult;
 import com.github.chrisgleissner.behaim.utils.PersonFields;
-import com.github.chrisgleissner.behaim.domain.SingleValueEnum;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Before;
@@ -19,6 +17,7 @@ import org.junit.runner.RunWith;
 
 import java.lang.reflect.Field;
 
+import static com.github.chrisgleissner.behaim.utils.PersonFields.EMPTY_ENUM;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.*;
@@ -50,7 +49,7 @@ public class ProducerVisitorTest {
 
     @Test
     public void testVisit_emptyEnum() throws Exception {
-        testVisit_enumField(PersonFields.EMPTY_ENUM, null);
+        testVisit_enumField(EMPTY_ENUM, Enum.class.cast(null));
     }
 
     @Test
@@ -63,7 +62,7 @@ public class ProducerVisitorTest {
         Field field = personField.getField();
         when(visitorContext.getFieldContextFor(eq(field))).thenReturn(fieldContext);
         Class<? extends Enum> enumClass = field.getType().asSubclass(Enum.class);
-        when(visitorContext.getSeedAdapterFor(eq(field))).thenReturn((SeedAdapter) new EnumAdapter<>(enumClass));
+        when(visitorContext.getSeedAdapterFor(eq(field))).thenCallRealMethod();
         when(seeder.createIntSeed()).thenReturn((expectedValue == null) ? 0 : expectedValue.ordinal());
         Person person = new Person();
         ProducerVisitor visitor = new ProducerVisitor(visitorContext);
@@ -75,7 +74,10 @@ public class ProducerVisitorTest {
         SoftAssertions soft = new SoftAssertions();
         soft.assertThat(result.getFieldContext()).isSameAs(fieldContext);
         soft.assertThat(result.getValue()).as("result.value").isSameAs(expectedValue);
-        soft.assertThat(person).extracting(field.getName()).containsExactly(expectedValue);
+        soft.assertThat(person).as("person").isNotNull();
+        if (person != null) {
+            soft.assertThat(field.get(person)).as(field.getName()).isEqualTo(expectedValue);
+        }
         soft.assertAll();
         if (enumClass.getEnumConstants().length > 1) {
             verify(seeder).createIntSeed();

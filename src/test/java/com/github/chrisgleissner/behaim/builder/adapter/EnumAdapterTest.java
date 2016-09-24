@@ -64,7 +64,7 @@ public class EnumAdapterTest {
         when(fieldConfig.getMaxValue()).thenReturn(ColorEnum.values().length);
         when(seeder.getConfig()).thenReturn(fieldConfig);
         when(seeder.createIntSeed()).thenReturn(expectedOrdinal);
-        return new EnumAdapter<>(enumClass);
+        return new EnumAdapter<E>(enumClass);
     }
 
     private <E extends Enum<E>> void verifyActualValue(Class<E> enumClass, E actualValue, E expectedValue) {

@@ -44,4 +44,8 @@ public class EnumAdapter<E extends Enum<E>> extends AbstractSeedAdapter<E> {
     public Class<E> getValueClass() {
         return enumClass;
     }
+
+    public static <E extends Enum<E>> SeedAdapter<E> forClass(Class<E> enumClass) {
+        return new EnumAdapter<E>(enumClass);
+    }
 }
