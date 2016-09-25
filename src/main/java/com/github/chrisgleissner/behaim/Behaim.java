@@ -23,14 +23,14 @@ import java.util.Collection;
 public class Behaim {
 
     public static <T> T build(Class<T> type) {
-        return new Builder<>(type).build();
+        return new Builder<T>(type).build();
     }
 
     public static <T> Collection<T> build(Class<T> type, int numberOfInstances) {
-        return new Builder<>(type).build(numberOfInstances);
+        return new Builder<T>(type).build(numberOfInstances);
     }
 
     public static <T> Collection<T> build(Class<T> type, int numberOfInstances, Config config) {
-        return new Builder<>(type, config).build(numberOfInstances);
+        return new Builder<T>(type, config).build(numberOfInstances);
     }
 }

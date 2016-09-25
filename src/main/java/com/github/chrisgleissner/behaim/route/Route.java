@@ -18,11 +18,11 @@ package com.github.chrisgleissner.behaim.route;
 import com.github.chrisgleissner.behaim.explorer.Explorer;
 import com.github.chrisgleissner.behaim.explorer.FieldContext;
 import com.github.chrisgleissner.behaim.explorer.Visitor;
+import com.github.chrisgleissner.behaim.utils.Objects;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Route discovered by an {@link Explorer}.

@@ -78,7 +78,7 @@ public class ProducerVisitorContext {
             type = TypeUtil.wrap(type);
         }
         if (field.getType().isEnum()) {
-            return new EnumAdapter<>(field.getType().asSubclass(Enum.class));
+            return EnumAdapter.forClass(field.getType().asSubclass(Enum.class));
         }
         return seedAdapters.get(type);
     }

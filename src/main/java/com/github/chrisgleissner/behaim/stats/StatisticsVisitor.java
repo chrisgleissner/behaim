@@ -3,6 +3,7 @@ package com.github.chrisgleissner.behaim.stats;
 import com.github.chrisgleissner.behaim.explorer.FieldContext;
 import com.github.chrisgleissner.behaim.explorer.VisitationResult;
 import com.github.chrisgleissner.behaim.explorer.Visitor;
+import com.github.chrisgleissner.behaim.utils.Objects;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -114,7 +115,7 @@ public class StatisticsVisitor implements Visitor {
             if (o == null || getClass() != o.getClass()) return false;
             Value value = (Value) o;
             return Objects.equals(object, value.object) &&
-                    Objects.equals(field, value.field);
+                   Objects.equals(field, value.field);
         }
 
         @Override

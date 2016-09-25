@@ -29,7 +29,7 @@ public class Config {
     private final int batchSize;
     private final int recursionDepth;
 
-    private final List<String> excludedClassNames = new ArrayList<>();
+    private final List<String> excludedClassNames = new ArrayList<String>();
     private final Map<String, FieldConfig> fieldConfigs;
     private final FieldConfig globalFieldConfig = new FieldConfig();
 
