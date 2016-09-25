@@ -10,7 +10,7 @@ object graphs which may be useful for performance tests.
 
 ## Status
 - Build Status: [![Build Status](https://travis-ci.org/chrisgleissner/behaim.svg?branch=master)](https://travis-ci.org/chrisgleissner/behaim)
-- Latest Release: 0.1.0, see [Maven Central Repo](http://search.maven.org/#artifactdetails%7Ccom.github.chrisgleissner%7Cbehaim%7C0.1.0%7Cjar)
+- Latest Release: 0.2.0, see [Maven Central Repo](http://search.maven.org/#artifactdetails%7Ccom.github.chrisgleissner%7Cbehaim%7C0.2.0%7Cjar)
 
 ## Features
 - Multi-threaded graph exploration
