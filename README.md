@@ -18,7 +18,7 @@ object graphs which may be useful for performance tests.
 - Extensible with custom visitors. Already comes with a visitor to create a randomly populated object graph.
 
 ## Requirements
-- Oracle JDK 7
+- Oracle JDK 8
 
 ## Builder Usage
 
