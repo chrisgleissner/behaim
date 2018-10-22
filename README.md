@@ -1,7 +1,7 @@
 # Behaim
 
 [![Build Status](https://travis-ci.org/chrisgleissner/behaim.svg?branch=master)](https://travis-ci.org/ksaua/remock)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.chrisgleissner/behaim/badge.svg)](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.github.chrisgleissner%22)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.chrisgleissner/behaim/badge.svg)](https://search.maven.org/artifact/com.github.chrisgleissner/behaim)
 [![Coverage Status](https://coveralls.io/repos/github/chrisgleissner/behaim/badge.svg?branch=master)](https://coveralls.io/github/chrisgleissner/behaim?branch=master)
 
 Behaim uses Java reflection to explore an domain model up to a configurable recursion depth. The resulting meta data
