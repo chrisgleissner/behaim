@@ -1,7 +1,8 @@
 # Behaim
 
-[![Build Status](https://travis-ci.org/chrisgleissner/behaim.svg?branch=master)](https://travis-ci.org/ksaua/remock)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.chrisgleissner/behaim/badge.svg)](https://search.maven.org/artifact/com.github.chrisgleissner/behaim)
+[![Javadocs](https://www.javadoc.io/badge/com.github.chrisgleissner/behaim.svg)](https://www.javadoc.io/doc/com.github.chrisgleissner/behaim)
+[![Build Status](https://travis-ci.org/chrisgleissner/behaim.svg?branch=master)](https://travis-ci.org/ksaua/remock)
 [![Coverage Status](https://coveralls.io/repos/github/chrisgleissner/behaim/badge.svg?branch=master)](https://coveralls.io/github/chrisgleissner/behaim?branch=master)
 [![Maintainability](https://api.codeclimate.com/v1/badges/cbf76afcf96f6596583e/maintainability)](https://codeclimate.com/github/chrisgleissner/behaim/maintainability)
 
